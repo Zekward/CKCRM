@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello Page</title>
-  </head>
-  <body>
-    <h1>Hello Jash!</h1>
-  </body>
+<head>
+    <title>Client Dashboard</title>
+</head>
+<body>
+    <h1>Typeform Leads</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Car Model</th>
+            <th>Service</th>
+            <th>Stage</th>
+            <th>Source</th>
+            <th>Submitted At</th>
+        </tr>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone }}</td>
+            <td>{{ client.car_model }}</td>
+            <td>{{ client.service }}</td>
+            <td>{{ client.stage }}</td>
+            <td>{{ client.source }}</td>
+            <td>{{ client.submitted_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
 </html>
