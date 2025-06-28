@@ -36,6 +36,8 @@ Next steps:
 
 6/26/25-6/28/25
 
+All data input streams will be linked to the Google Sheet connected to this Flask app. We can now deploy. 
+
 Accomplished:
 - added display of sample clients from data.py loaded from test csv file
 - created Google Cloud project and generated a service account key for API authentication
@@ -47,4 +49,4 @@ Next Steps:
 - add support for multiple input sources
 - improve frontend layout and styling of dashboard page
 - new leads automatically show up when a new Typeform is created
-
+- deploy mvp on aws
