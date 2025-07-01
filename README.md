@@ -2,17 +2,20 @@ Author: Zekey Huang
 
 About Project: Simple webpage for CleanKars CRM 
 
-## Quick Start for Running Locally
+### Quick Start for Running Locally
 
-2. Open this google sheets (https://docs.google.com/spreadsheets/d/14n16WOL1_vzH4QrZ6UM0P0dsrbDR2gqGBf-IjG0NSoI/edit?gid=1054001080#gid=1054001080)
-3. Edit the google sheets by creating a new row
+1. Open this google sheets (https://docs.google.com/spreadsheets/d/14n16WOL1_vzH4QrZ6UM0P0dsrbDR2gqGBf-IjG0NSoI/edit?gid=1054001080#gid=1054001080)
+2. Edit the google sheets by creating a new row
     - You will get a popup saying "You’re trying to edit part of this sheet that shouldn’t be changed accidentally. Edit anyway?". Ignore this and edit anyways. 
-4. Open this link (https://ckcrm.onrender.com/)
-5. Click refresh, a new row should pop up
-6. Keep adding rows and click refresh
+3. Open this link (https://ckcrm.onrender.com/)
+4. Click refresh, a new row should pop up
+5. Keep adding rows and click refresh
 
 
-6/17/25
+
+### Log
+
+## 6/17/25
 
 - Created TypeForm free account
 - Created free Zapier account
@@ -30,7 +33,7 @@ Next steps:
 
 
 
-6/18/25
+## 6/18/25
 
 Accomplished: 
 - set up Flask server
@@ -42,7 +45,7 @@ Next steps:
 
 
 
-6/26/25-6/28/25
+## 6/26/25-6/28/25
 
 All data input streams will be linked to the Google Sheet connected to this Flask app. We can now deploy. 
 
@@ -61,7 +64,7 @@ Next Steps:
 
 
 
-6/30/25-7/1/25
+## 6/30/25-7/1/25
 
 Accomplished: 
 - deployed live MVP dashboard on Render
