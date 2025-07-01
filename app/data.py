@@ -1,9 +1,19 @@
 import os
 import gspread
+import json
+import base64
+
 
 
 def load_clients():
-    gc = gspread.service_account(filename=os.path.join(os.path.dirname(__file__), '..', 'credentials.json'))
+
+    creds_base64 = os.getenv('GOOGLE_CREDENTIALS')
+    if not creds_base64:
+        raise ValueError("Missing GOOGLE_CREDENTIALS")
+    
+    creds_json = base64.b64decode(creds_base64).decode('utf-8')
+    credentials_info = json.loads(creds_json)
+    gc = gspread.service_account_from_dict(credentials_info)
 
     sh = gc.open('MVP CRM Tracker')
 
