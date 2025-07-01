@@ -2,7 +2,7 @@ Author: Zekey Huang
 
 About Project: Simple webpage for CleanKars CRM 
 
-### Quick Start for Running Locally
+# Quick Start for Running Locally
 
 1. Open this google sheets (https://docs.google.com/spreadsheets/d/14n16WOL1_vzH4QrZ6UM0P0dsrbDR2gqGBf-IjG0NSoI/edit?gid=1054001080#gid=1054001080)
 2. Edit the google sheets by creating a new row
@@ -13,7 +13,7 @@ About Project: Simple webpage for CleanKars CRM
 
 
 
-### Log
+# Log
 
 ## 6/17/25
 
