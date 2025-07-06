@@ -4,34 +4,38 @@ import json
 import base64
 
 
-
-def load_clients():
-
+def get_gspread_client():
+    """ Decode environment-stored credentials and return gspread client """
     creds_base64 = os.getenv('GOOGLE_CREDENTIALS')
     if not creds_base64:
         raise ValueError("Missing GOOGLE_CREDENTIALS")
     
     creds_json = base64.b64decode(creds_base64).decode('utf-8')
     credentials_info = json.loads(creds_json)
-    gc = gspread.service_account_from_dict(credentials_info)
-
-    sh = gc.open('MVP CRM Tracker')
-
-    worksheet = sh.sheet1
-    rows = worksheet.get_all_records()
-
-    clients = []
-
-    for row in rows:
-        clients.append({
-            "name": row.get("Name", "N/A"),
-                "email": row.get("Email", "N/A"),
-                "phone": row.get("Enter your number", "N/A"),
-                "car_model": row.get("Make and Model", "N/A"),
-                "service": row.get("Which services are you interested in?", "N/A"),
-                "stage": "New Lead",  # Default stage for now
-                "source": "Typeform",  # Hardcoded source
-                "submitted_at": row.get("Submitted At", "N/A"),
-        })
     
-    return clients
+    return gspread.service_account_from_dict(credentials_info)
+
+def get_sheet_records(sheet_name='MVP CRM Tracker'):
+    """ Fetch all records from from the first worksheet in a given Google Sheet."""
+    gc = get_gspread_client()
+    sh = gc.open(sheet_name)
+    worksheet = sh.sheet1
+    return worksheet.get_all_records()
+
+def transform_row_to_client(row):
+    """ Convert gs row to structured client dictionary """
+    return {
+        "name": row.get("Name", "N/A"),
+        "email": row.get("Email", "N/A"),
+        "phone": row.get("Enter your number", "N/A"),
+        "car_model": row.get("Make and Model", "N/A"),
+        "service": row.get("Which services are you interested in?", "N/A"),
+        "stage": "New Lead",  # Default stage for now
+        "source": "Typeform",  # Hardcoded source
+        "submitted_at": row.get("Submitted At", "N/A"),
+    }
+
+
+def load_clients():
+    rows = get_sheet_records()
+    return [transform_row_to_client(row) for row in rows]
