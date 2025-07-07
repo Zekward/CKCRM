@@ -85,6 +85,10 @@ Next Steps:
 Accomplished:
 - create grouping function by stage 
 - add test suite for data.py functions
+- implemented sorting by name and time in both flat and grouped-by-stage views
+- group by stage is now fully supported with individual stage tables
 
 Next Steps:
-- same as before
+- improve visual styling: using color tags or icons for each stage
+- add search bar
+- enable dragging and dropping into new stages and editing Google Sheets
