@@ -92,6 +92,7 @@ Accomplished:
 - group by stage is now fully supported with individual stage tables
 
 Next Steps:
+- fix group_by_stage ordering 
 - improve visual styling: using color tags or icons for each stage
 - add search bar
 - enable dragging and dropping into new stages and editing Google Sheets
