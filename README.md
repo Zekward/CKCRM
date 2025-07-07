@@ -77,3 +77,14 @@ Next Steps:
 - front end design
 - function to organize rows by stage, location
 - other input sources
+
+
+
+## 7/6/25 - 7/7/25
+
+Accomplished:
+- create grouping function by stage 
+- add test suite for data.py functions
+
+Next Steps:
+- same as before
