@@ -10,6 +10,9 @@ About Project: Simple webpage for CleanKars CRM
 3. Open this link (https://ckcrm.onrender.com/)
 4. Click refresh, a new row should pop up
 5. Keep adding rows and click refresh
+6. Hover over the green "Group By" button
+    - Click on "Stage": this splits the clients into the different stages: new leads, contacted, booked, closed ... 
+    - Click on "None": this brings it back into original flat list view. 
 
 
 
