@@ -2,34 +2,165 @@
 <html>
 <head>
     <title>Client Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .dropdown button {
+            padding: 10px 16px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            color: black;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .stage-header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-left: 5px solid #4CAF50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th a {
+            text-decoration: none;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        button.refresh-btn {
+            margin-top: 10px;
+            padding: 8px 14px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button.refresh-btn:hover {
+            background-color: #1976D2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Typeform Leads</h1>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Car Model</th>
-            <th>Service</th>
-            <th>Stage</th>
-            <th>Source</th>
-            <th>Submitted At</th>
-        </tr>
-        {% for client in clients %}
-        <tr>
-            <td>{{ client.name }}</td>
-            <td>{{ client.email }}</td>
-            <td>{{ client.phone }}</td>
-            <td>{{ client.car_model }}</td>
-            <td>{{ client.service }}</td>
-            <td>{{ client.stage }}</td>
-            <td>{{ client.source }}</td>
-            <td>{{ client.submitted_at }}</td>
-        </tr>
+    <h1>Client Dashboard</h1>
+
+    <div class="dropdown">
+        <button>Group By</button>
+        <div class="dropdown-content">
+            <a href="/?group_by=stage">Stage</a>
+            <a href="/">None</a>
+        </div>
+    </div>
+
+    {% macro sort_link(column_name, label) %}
+        {% set next_order = 'desc' if sort_by == column_name and order == 'asc' else 'asc' %}
+        <a href="?sort={{ column_name }}&order={{ next_order }}{% if group_by_stage %}&group_by=stage{% endif %}">{{ label }}</a>
+    {% endmacro %}
+
+    {% if group_by_stage %}
+        {% for stage, clients in grouped_clients.items() if clients %}
+            <div class="stage-header">{{ stage }}</div>
+            <table>
+                <tr>
+                    <th>{{ sort_link('name', 'Name') }}</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Car Model</th>
+                    <th>Service</th>
+                    <th>Source</th>
+                    <th>{{ sort_link('submitted_at', 'Time') }}</th>
+                </tr>
+                {% for client in clients %}
+                <tr>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.phone }}</td>
+                    <td>{{ client.car_model }}</td>
+                    <td>{{ client.service }}</td>
+                    <td>{{ client.source }}</td>
+                    <td>{{ client.submitted_at }}</td>
+                </tr>
+                {% endfor %}
+            </table>
         {% endfor %}
-    </table>
-    <button onclick="location.reload();">Refresh</button>
-    
+    {% else %}
+        <table>
+            <tr>
+                <th>{{ sort_link('name', 'Name') }}</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Car Model</th>
+                <th>Service</th>
+                <th>Stage</th>
+                <th>Source</th>
+                <th>{{ sort_link('submitted_at', 'Time') }}</th>
+            </tr>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.phone }}</td>
+                <td>{{ client.car_model }}</td>
+                <td>{{ client.service }}</td>
+                <td>{{ client.stage }}</td>
+                <td>{{ client.source }}</td>
+                <td>{{ client.submitted_at }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <button class="refresh-btn" onclick="location.reload();">Refresh</button>
 </body>
 </html>
