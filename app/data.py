@@ -65,6 +65,24 @@ def sort_clients(clients, sort_key, order="asc"):
 
     return sorted(clients, key=safe_key, reverse=reverse)
 
+def append_new_client(client_data):
+    gc = get_gspread_client()
+    sheet = gc.open('MVP CRM Tracker').sheet1
+
+    row = [
+        client_data.get("Name", ""),
+        client_data.get("Email", ""),
+        client_data.get("Enter your number", ""), 
+        client_data.get("Make and Model", ""),
+        client_data.get("Which services are you interested in?", ""),
+        "",  # Message (optional)
+        client_data.get("Submitted At", ""),
+        "",  # Token (leave empty)
+        client_data.get("Status", "New Lead")
+    ]
+
+    sheet.append_row(row)
+
 
 def load_clients():
     rows = get_sheet_records()

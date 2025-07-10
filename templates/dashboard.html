@@ -95,6 +95,25 @@
 <body>
     <h1>Client Dashboard</h1>
 
+    <h2>Add New Client</h2>
+    <form method="POST" style="margin-bottom: 30px;">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone" placeholder="Phone" required>
+        <input type="text" name="car_model" placeholder="Car Model" required>
+        <input type="text" name="service" placeholder="Service" required>
+        <select name="stage" required>
+            <option value="New Lead">New Lead</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Booked">Booked</option>
+            <option value="Closed">Closed</option>
+            <option value="Ghosted">Ghosted</option>
+            <option value="Followed Up">Followed Up</option>
+        </select>
+        <button type="submit" class="refresh-btn">Add Client</button>
+    </form>
+
+
     <div class="dropdown">
         <button>Group By</button>
         <div class="dropdown-content">

@@ -96,3 +96,26 @@ Next Steps:
 - improve visual styling: using color tags or icons for each stage
 - add search bar
 - enable dragging and dropping into new stages and editing Google Sheets
+- make sure each column in the group by stage is lined up properly
+
+
+
+## 7/10/25
+
+Accomplished: 
+- created add client form allowing for new clients to be appended to sheets
+- also viewable in group by stage
+
+Problems for future ref: 
+- data structure was not designed first, so new features constantly break or need readjustment to data structure
+    - for service focus on designing structure first
+
+Next steps:
+- fix column widths in group by staging
+- standardize datetime format and phone number format
+- make service selectable
+- drag & drop feature
+- test functions
+- refactor data structure to allow for easier feature add-ons
+
+
