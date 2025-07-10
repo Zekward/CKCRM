@@ -13,6 +13,8 @@ About Project: Simple webpage for CleanKars CRM
 6. Hover over the green "Group By" button
     - Click on "Stage": this splits the clients into the different stages: new leads, contacted, booked, closed ... 
     - Click on "None": this brings it back into original flat list view. 
+7. Fill out new client form at top of page
+    - this refreshes page and adds client to bottom
 
 
 
