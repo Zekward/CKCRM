@@ -1,6 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
-from .data import load_clients, group_clients_by_stage, sort_clients, append_new_client
+from flask import Blueprint, render_template, request, redirect, url_for
 from datetime import datetime
+
+from app.services.data_loader import load_clients, append_new_client
+from app.services.transformers import group_clients_by_stage
+from app.services.sort_utils import sort_clients
 
 views = Blueprint('views', __name__)
 
