@@ -1,0 +1,18 @@
+{% for stage, clients in grouped_clients.items() if clients %}
+    <div class="stage-header">{{ stage }}</div>
+    <table>
+        <tr>
+            {{ sort_link('name', 'Name')|safe }}
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Car Model</th>
+            <th>Service</th>
+            <th>Source</th>
+            {{ sort_link('submitted_at', 'Time')|safe }}
+        </tr>
+        {% set show_stage = False %}
+        {% for client in clients %}
+            {% include "components/client_row.html" %}
+        {% endfor %}
+    </table>
+{% endfor %}

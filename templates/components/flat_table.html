@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        {{ sort_link('name', 'Name')|safe }}
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Car Model</th>
+        <th>Service</th>
+        <th>Stage</th>
+        <th>Source</th>
+        {{ sort_link('submitted_at', 'Time')|safe }}
+    </tr>
+    {% set show_stage = True %}
+    {% for client in clients %}
+        {% include "components/client_row.html" with context%}
+    {% endfor %}
+</table>

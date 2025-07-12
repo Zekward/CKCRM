@@ -1,0 +1,12 @@
+<tr>
+    <td>{{ client.name }}</td>
+    <td>{{ client.email }}</td>
+    <td>{{ client.phone }}</td>
+    <td>{{ client.car_model }}</td>
+    <td>{{ client.service }}</td>
+    {% if show_stage %}
+        <td>{{ client.stage }}</td>
+    {% endif %}
+    <td>{{ client.source }}</td>
+    <td>{{ client.submitted_at }}</td>
+</tr>

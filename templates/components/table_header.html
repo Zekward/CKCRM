@@ -1,0 +1,8 @@
+{% macro sort_link(column_name, label) %}
+    {% set next_order = 'desc' if sort_by == column_name and order == 'asc' else 'asc'%}
+    <th>
+        <a href="?sort={{ column_name }}&order={{ next_order }}{% if group_by_stage %}&group_by=stage{% endif %}">
+            {{ label }}
+        </a>
+    </th>
+{% endmacro %}

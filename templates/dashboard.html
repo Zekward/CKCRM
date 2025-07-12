@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Client Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
+            background-color: #fefefe;
         }
 
         h1 {
@@ -25,6 +25,7 @@
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 4px;
         }
 
         .dropdown-content {
@@ -64,6 +65,10 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
+            border-radius: 6px;
+            overflow: hidden;
         }
 
         th, td {
@@ -72,10 +77,27 @@
             text-align: left;
         }
 
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
         th a {
             text-decoration: none;
             font-size: 0.8em;
             margin-left: 5px;
+            color: black;
+        }
+
+        th a:hover {
+            text-decoration: underline;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
         }
 
         button.refresh-btn {
@@ -85,6 +107,7 @@
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 4px;
         }
 
         button.refresh-btn:hover {
@@ -113,7 +136,6 @@
         <button type="submit" class="refresh-btn">Add Client</button>
     </form>
 
-
     <div class="dropdown">
         <button>Group By</button>
         <div class="dropdown-content">
@@ -122,62 +144,12 @@
         </div>
     </div>
 
-    {% macro sort_link(column_name, label) %}
-        {% set next_order = 'desc' if sort_by == column_name and order == 'asc' else 'asc' %}
-        <a href="?sort={{ column_name }}&order={{ next_order }}{% if group_by_stage %}&group_by=stage{% endif %}">{{ label }}</a>
-    {% endmacro %}
+    {% from "components/table_header.html" import sort_link %}
 
     {% if group_by_stage %}
-        {% for stage, clients in grouped_clients.items() if clients %}
-            <div class="stage-header">{{ stage }}</div>
-            <table>
-                <tr>
-                    <th>{{ sort_link('name', 'Name') }}</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Car Model</th>
-                    <th>Service</th>
-                    <th>Source</th>
-                    <th>{{ sort_link('submitted_at', 'Time') }}</th>
-                </tr>
-                {% for client in clients %}
-                <tr>
-                    <td>{{ client.name }}</td>
-                    <td>{{ client.email }}</td>
-                    <td>{{ client.phone }}</td>
-                    <td>{{ client.car_model }}</td>
-                    <td>{{ client.service }}</td>
-                    <td>{{ client.source }}</td>
-                    <td>{{ client.submitted_at }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        {% endfor %}
+        {% include "components/grouped_table.html" %}
     {% else %}
-        <table>
-            <tr>
-                <th>{{ sort_link('name', 'Name') }}</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Car Model</th>
-                <th>Service</th>
-                <th>Stage</th>
-                <th>Source</th>
-                <th>{{ sort_link('submitted_at', 'Time') }}</th>
-            </tr>
-            {% for client in clients %}
-            <tr>
-                <td>{{ client.name }}</td>
-                <td>{{ client.email }}</td>
-                <td>{{ client.phone }}</td>
-                <td>{{ client.car_model }}</td>
-                <td>{{ client.service }}</td>
-                <td>{{ client.stage }}</td>
-                <td>{{ client.source }}</td>
-                <td>{{ client.submitted_at }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        {% include "components/flat_table.html" %}
     {% endif %}
 
     <button class="refresh-btn" onclick="location.reload();">Refresh</button>
