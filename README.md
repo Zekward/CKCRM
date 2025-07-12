@@ -121,3 +121,19 @@ Next steps:
 - refactor data structure to allow for easier feature add-ons
 
 
+
+## 7/12/25
+
+Accomplished:
+- Refactored codebase and HTML structure to allow for easier scalability
+- Fix redirect after adding a client in group stage view
+    - previously would redirect to flat view rather than staying in group stage view if already in group stage view
+- Get rid of redundant group stage column while in group stage view
+
+Pending features/fixes: 
+- fix column widths in group
+- standardize datetime and phone number format
+- make service selectable with drop down
+- drag & drop features
+- fix format of sortby buttons on name and time
+- fix functionality of sortby (currently only sorts ascending)
