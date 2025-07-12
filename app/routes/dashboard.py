@@ -33,7 +33,11 @@ def dashboard():
             "Submitted At": submitted_at
         })
 
-        return redirect(url_for('views.dashboard'))
+        query_string = request.query_string.decode()
+        redirect_url = url_for('views.dashboard')
+        if 'group_by=stage' in query_string:
+            redirect_url += '?group_by=stage'
+        return redirect(redirect_url)
     
     
     # Load all clients from Google Sheets
