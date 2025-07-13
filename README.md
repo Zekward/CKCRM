@@ -19,23 +19,11 @@ About Project: Simple webpage for CleanKars CRM
 
 # Techstack
 
-## Backend
-- Python
-- Flask
-- gspread
-- dotenv
-## Testing
-- unittest
-- unittest.mock
-## Frontend
-- HTML
-- CSS
-- Jinja2
-## Integrations
-- Google Sheets API
-- Typeform + Zapier
-## Data Storage
-- Google Sheets
+**Frontend**: HTML, CSS, Jinja2
+**Backend**: Python, Flask
+**Database**: Google Sheets
+**Testing**: unittest
+**Integrations**: Zapier, Typeform
 
 # Log
 
