@@ -144,3 +144,22 @@ Pending features/fixes:
 - drag & drop features
 - fix format of sortby buttons on name and time
 - fix functionality of sortby (currently only sorts ascending)
+
+
+
+## 7/13/25
+
+Accomplished:
+- Adjusted group stage view to allow for even column widths. 
+- Changed text overflow settings to avoid spilling into other columns
+
+Pending features/fixes:
+- standardize datetime and phone number format
+- drag & drop 
+- fix format of sortby buttons on namne and time
+- fix order of group stage
+- create topbar with clients list, group stage (actions stream)
+- change to each client row displaying only name, number, email, and stage
+    - once the client row is clicked on, then redirect to new page with more info
+- copy email funcitonality next to each email and number
+- followup email auto send button

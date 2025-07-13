@@ -62,6 +62,7 @@
         }
 
         table {
+            table-layout: fixed;
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
@@ -69,19 +70,21 @@
             box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
             border-radius: 6px;
             overflow: hidden;
+            table-layout: fixed;
         }
 
         th, td {
             border: 1px solid #aaa;
-            padding: 8px;
+            padding: 6px 8px;
             text-align: left;
+            overflow-wrap: break-word;
         }
 
         th {
             background-color: #f9f9f9;
             font-weight: bold;
         }
-
+       
         th a {
             text-decoration: none;
             font-size: 0.8em;
@@ -112,6 +115,23 @@
 
         button.refresh-btn:hover {
             background-color: #1976D2;
+        }
+
+        .email-cell, .service-cell {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
+
+        th:nth-child(2), td:nth-child(2) {  /* Email column */
+            width: 20%;
+            word-break: break-word;  /* wrap long emails if needed */
+        }
+
+        th:nth-child(5), td:nth-child(5) {  /* Service column */
+            width: 25%;
+            word-break: break-word;  /* wrap long service strings */
         }
     </style>
 </head>
