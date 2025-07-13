@@ -17,6 +17,25 @@ About Project: Simple webpage for CleanKars CRM
     - this refreshes page and adds client to bottom
 
 
+# Techstack
+
+## Backend
+- Python
+- Flask
+- gspread
+- dotenv
+## Testing
+- unittest
+- unittest.mock
+## Frontend
+- HTML
+- CSS
+- Jinja2
+## Integrations
+- Google Sheets API
+- Typeform + Zapier
+## Data Storage
+- Google Sheets
 
 # Log
 
